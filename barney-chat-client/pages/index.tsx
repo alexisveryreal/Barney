@@ -35,9 +35,12 @@ export default function Home() {
 
   return (
     <div>
-      {JSON.stringify(messages)}
-      </div><div>
-      <input type="text" value={text} onChange={(evt) => setText(evt.target.value)} />
+      <div>{JSON.stringify(messages)}</div>
+      <input 
+        type="text" 
+        value={text} 
+        onChange={(evt) => setText(evt.target.value)} 
+      />
       <button onClick={onSendMessage}>Add</button>
     </div>
   );

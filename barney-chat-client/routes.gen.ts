@@ -8,9 +8,9 @@ import * as $2 from "./pages/[name].tsx";
 
 const routes = {
   pages: {
-    "./pagesnt/pages/api/joke.ts": $0,
-    "./pagesnt/pages/index.tsx": $1,
-    "./pagesnt/pages/[name].tsx": $2,
+    "./pages/api/joke.ts": $0,
+    "./pages/index.tsx": $1,
+    "./pages/[name].tsx": $2,
   },
   baseUrl: import.meta.url,
 };
