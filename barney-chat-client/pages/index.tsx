@@ -7,6 +7,7 @@ interface Message {
 export default function Home() {
 
   const [messages, setMessages] = useState<Message[]>([])
+  const [text, setText] = useState("");
 
   const getMessages = useCallback(async () => {
     const res = await fetch('https://barney-chat-api.deno.dev/messages');
@@ -18,9 +19,26 @@ export default function Home() {
     getMessages();
   }, [])
 
+  const onSendMessage = useCallback(async () => {
+    await fetch('https://barney-chat-api.deno.dev/messages', {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        text,
+      }),
+    });
+    setText("");
+    getMessages();
+  }, [text]);
+
   return (
     <div>
       {JSON.stringify(messages)}
+      </div><div>
+      <input type="text" value={text} onChange={(evt) => setText(evt.target.value)} />
+      <button onClick={onSendMessage}>Add</button>
     </div>
   );
 }
